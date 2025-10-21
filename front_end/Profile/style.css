@@ -1,0 +1,299 @@
+/* From Uiverse.io by chandrasek_6406 */ 
+:root{
+    --bg:#020202; /* very dark slate */
+    --panel:#0b1220;
+    --muted:#9aa6b2;
+    --accent:#7c3aed; /* violet */
+    --glass: rgba(255,255,255,0.04);
+    --card:#0f1726;
+    --outlines: #058C42;
+    --header:#0D2818;
+    --text:#16DB65;
+}
+body,html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  background:var(--bg) ;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(360deg, #0d2d1b, #0f1726);
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  position:absolute;
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pixar-card {
+  --ui-blue: #5c99e2;
+  --ui-blue-shadow: #3b76c0;
+  --ui-green: #61c470;
+  --ui-green-shadow: #45a253;
+  --ui-red: #e65e5e;
+  --ui-red-shadow: #c14242;
+  --ui-cream: #f5f1e8;
+  --ui-cream-shadow: #c7c1b5;
+  --ui-dark: #4d4c4a;
+  --button-press-depth: 0.15em;
+
+  position: relative;
+  width: 30em;
+  max-width: 40em;
+  max-height: 400px;
+  background-color: var(--card);
+  border-radius: 1.5em;
+  padding: 1.2em;
+  border: 0.2em solid var(--outlines);
+  box-shadow: 0.6em 0.6em 0 var(--header);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pixar-card:hover {
+  transform: translateY(-0.5em) rotate(-2deg);
+  box-shadow: 0.8em 0.8em 0 var(--panel);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.card-avatar {
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 0.2em solid var(--panel);
+  box-shadow: 0.2em 0.2em 0 var(--panel);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.pixar-card:hover .card-avatar {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.card-username {
+  margin: 0 0 0 0.8em;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: white;
+}
+
+.card-image-area {
+  background:linear-gradient(180deg, var(--card), var(--header) );
+  border-radius: 1em;
+  padding: 0.8em;
+  border: 0.2em solid var(--outlines);
+  box-shadow: inset 0.2em 0.2em 0 var(--outlines);
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 5em;
+  border-radius: 0.6em;
+  background: var(--panel);
+  border: 0.2em solid var(--ui-dark);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pixar-card:hover .card-image-placeholder {
+  transform: scale(1.03);
+}
+
+.card-caption {
+  margin: 1em 0 0 0;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: white;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5em;
+}
+
+.action-button {
+  background: var(--ui-green);
+  border: 0.2em solid var(--ui-dark);
+  border-radius: 1em;
+  padding: 0.5em;
+  cursor: pointer;
+  box-shadow:
+    0 var(--button-press-depth), 0 var(--ui-green-shadow),
+    0 0.4em 0 var(--ui-dark);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.action-button:active {
+  transform: translateY(var(--button-press-depth));
+  box-shadow:
+    0 var(--ui-green-shadow),
+    0 var(--button-press-depth) 0 var(--ui-dark);
+}
+
+.like-button {
+  background: var(--ui-green);;
+  box-shadow:
+    0 var(--button-press-depth) 0 var(--ui-green-shadow),
+    0 0.4em 0 var(--ui-dark);
+}
+
+.like-button:active {
+  box-shadow:
+    0 0 0 var(--ui-red-shadow),
+    0 var(--button-press-depth) 0 var(--ui-dark);
+}
+
+.action-button-icon {
+  width: 2.4em;
+  height: 1.8em;
+  stroke: var(--ui-dark);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  margin: 0 auto;
+}
+/* Initial state: Hidden off-screen to the right */
+.edit-container {
+    /* Positioning and appearance */
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 20%;
+    right: 0;
+    width: 300px; /* Adjust as needed */
+    height: 50vh;
+    background-color: var(--panel);
+    padding: 20px;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+    /* Transition effect setup */
+    transition: transform 0.5s ease-in-out;
+
+    /* Start position: 100% of its own width off the screen to the right */
+    transform: translateX(100%);
+    border: 2px solid var(--outlines);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+}
+
+/* Style for children elements */
+.edit-container > * {
+    /* Optional: Basic styling for children */
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    justify-self: center;
+    width: 100%;
+    font-weight: 900;
+    font-size: 18px;
+    
+}
+.edit-container label {
+    color:var(--text);
+}
+
+.edit-container textarea {
+    color:white;
+    background-color: var(--header);
+    border: none;
+    resize: vertical;
+    padding: 10px;
+    border: 1px solid var(--outlines);
+    border-radius: 10px;
+    overflow-wrap: break-word;
+}
+.edit-container textarea:focus {
+    outline: none;
+    border: 2px solid var(--text);
+}
+.topbar{
+    position:fixed;
+    z-index: 999;
+    top:0px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 28px;
+    background:linear-gradient(90deg, var(--header), transparent);
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+    width: 95%;
+}
+.ghost{background:transparent;border:2px solid var(--outlines);color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer;
+transition: all 200ms ease-in-out;
+
+}
+.ghost:hover{
+    background-color: var(--outlines);
+    color: white;
+}
+.controls{display:flex;gap:10px;align-items:center;}
+.brand h1{margin:0;font-size:20px;letter-spacing:0.4px;color: var(--text);font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+.brand .tag{color:var(--muted);margin:2px 0 0;font-size:12px}
+
+    
+
+/* Target state: Slides into view */
+/* This is the state the element must enter when the button is "pressed" */
+/* In a real-world pure CSS hack, this would be tied to :checked or :target */
+/* Example for pure CSS hack: input[type="checkbox"]:checked ~ .edit-container */
+
+.edit-container.is-open {
+    /* End position: Slides into view */
+    transform: translateX(0);
+}
+
+/* From Uiverse.io by adamgiebl */ 
+#bioSubmit {
+  background: var(--outlines);
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid var(--header);
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em var(--header);
+  cursor: pointer;
+  width: 10em;
+}
+
+#bioSubmit:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em var(--header);
+}
+
+#bioSubmit:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+#profileImage{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  
+}
