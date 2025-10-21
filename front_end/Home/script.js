@@ -5,7 +5,7 @@ let imageContainer =  document.getElementById("images");
 //logout button
 document.getElementById('logBtn').addEventListener("click",()=>{
     localStorage.clear()
-    window.location.href = "/Login";
+    window.location.href = "../index.html";
 
 })
 
@@ -158,10 +158,10 @@ function openImageModal(src) {
       const token = localStorage.getItem("token")
       if(isTokenExpired(token)){
           alert("Token Expired Re-Login")
-          window.location.href = "/Login"
+          window.location.href = "../index.html"
           return
       }
-      let res = await fetch('http://localhost:3000/delete-image', {
+      let res = await fetch('https://backend-production-fea2.up.railway.app/delete-image', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'Bearer ' + token },
         // send the property name your server expects (use "imageurl" instead of "url")
@@ -234,10 +234,10 @@ let h1 = document.getElementById("usr")
 const token = localStorage.getItem("token")
 if(isTokenExpired(token)){
     alert("Token Expired Re-Login")
-    window.location.href = "/Login"
+    window.location.href = "../index.html"
 }
 else{
-    fetch('http://localhost:3000/user', {   
+    fetch('https://backend-production-fea2.up.railway.app/user', {   
     method: 'GET',
     headers: {
         Authorization: "Bearer " + token
@@ -280,7 +280,7 @@ function handleImageUpload(input) {
     const formData = new FormData();
     formData.append('image', file);
 
-    fetch('http://localhost:3000/upload', {
+    fetch('https://backend-production-fea2.up.railway.app/upload', {
       method: 'POST',
       headers: {
       Authorization: "Bearer " + localStorage.getItem("token")
@@ -323,5 +323,5 @@ function isTokenExpired(token) {
   return payload.exp < now; 
 }
 function callProfilePage(){
-  window.location.href = "/Profile"
+  window.location.href = "../Profile/"
 }

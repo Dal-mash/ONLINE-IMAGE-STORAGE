@@ -13,11 +13,11 @@ function getProfileData() {
   const token = localStorage.getItem('token');
   if (isTokenExpired(token)) {
     alert('Session expired. Please log in again.');
-    window.location.href = '/Login';
+    window.location.href = '../index.html';
     return;
   }
 
-  fetch('http://localhost:3000/user', {
+  fetch('https://backend-production-fea2.up.railway.app/user', {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ function setupCommentEditor() {
       }
 
       console.log(bioText)
-      fetch('http://localhost:3000/update-bio', {
+      fetch('https://backend-production-fea2.up.railway.app/update-bio', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ function setupImageUpload() {
       return;
     }
 
-    fetch('http://localhost:3000/update-pic', {
+    fetch('https://backend-production-fea2.up.railway.app/update-pic', {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -173,11 +173,11 @@ function isTokenExpired(token) {
 }
 document.getElementById('logBtn').addEventListener("click",()=>{
     localStorage.clear()
-    window.location.href = "/Login";
+    window.location.href = "../index.html";
 
 })
 document.getElementById('homeBtn').addEventListener("click",()=>{
-    window.location.href = "/Home";
+    window.location.href = "../Home/";
 
 })
 

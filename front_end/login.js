@@ -12,12 +12,12 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         body:  JSON.stringify({email, password})
     };
 
-    fetch('http://localhost:3000/Sign-in', options)
+    fetch('https://backend-production-fea2.up.railway.app/Sign-in', options)
         .then(response => response.json())
         .then(({userId, token})=>{
             if(token){
                 localStorage.setItem("token",token)
-                window.location.href = "/Home";
+                window.location.href = "./Home/";
             }
             else(
                 alert("NO TOKEN PROVIDED")
@@ -34,7 +34,7 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
 
-    fetch('http://localhost:3000/sign-up', {
+    fetch('https://backend-production-fea2.up.railway.app/sign-up', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -45,7 +45,6 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
         if (response.ok) {
             alert('Sign up successful!')
             success = true
-            window.location.href = "/Home"
         } else {
             alert('Sign up failed.');
             success = false
@@ -61,12 +60,12 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
         headers: {'Content-Type': 'application/json'},
         body:  JSON.stringify({email, password})
         };
-        fetch('http://localhost:3000/Sign-in', options)
+        fetch('https://backend-production-fea2.up.railway.app/Sign-in', options)
         .then(response =>  response.json())
         .then(({userId, token})=>{
             if(token){
                 localStorage.setItem("token",token)
-                window.location.href = "/Home";
+                window.location.href = "./Home/";
             }
             else(
                 alert("NO TOKEN PROVIDED")
