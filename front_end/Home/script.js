@@ -298,7 +298,7 @@ function handleImageUpload(input) {
       if (data && data.success) {
         alert("image Uploaded");
         fetchedImages.push(data.img);
-        addToGallery(data.img)
+        updateImages();
       }
     })
     .catch(err => {
