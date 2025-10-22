@@ -23,7 +23,9 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
                 alert("NO TOKEN PROVIDED")
             )
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            warn("Login failed. Please check your credentials and try again.");
+            console.error(err)});
 });
 
 ////////SIGN UP FORM
