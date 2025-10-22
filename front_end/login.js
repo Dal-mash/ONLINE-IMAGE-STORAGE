@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
             )
         })
         .catch(err => {
-            warn("Login failed. Please check your credentials and try again.");
+            alert("Login failed. Please check your credentials and try again.");
             console.error(err)});
 });
 
